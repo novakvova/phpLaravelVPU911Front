@@ -8,6 +8,17 @@ export interface ILoginModel {
     password: string
 }
 
+export interface ILoginResponse {
+    access_token: string,
+    user: IUser
+}
+
+export interface ILoginServerError {
+    email: Array<string>
+    password: Array<string>,
+    error: string
+} 
+
 export interface IUser {
     email: string,
     image: string
