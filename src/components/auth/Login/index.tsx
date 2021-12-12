@@ -48,7 +48,7 @@ const LoginPage = () => {
     onSubmit: onHandleSubmit,
   });
 
-  const { errors, touched, handleChange, handleSubmit } = formik;
+  const { errors, touched, handleChange, handleSubmit, setFieldError } = formik;
 
   return (
     <div className="row">

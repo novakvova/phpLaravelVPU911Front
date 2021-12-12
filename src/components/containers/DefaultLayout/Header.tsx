@@ -27,6 +27,11 @@ const Header = () => {
                 Додати авто
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/products">
+                Продукти
+              </Link>
+            </li>
           </ul>
           {isAuth ? (
             <ul className="navbar-nav">

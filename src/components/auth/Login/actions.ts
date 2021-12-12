@@ -8,11 +8,8 @@ export const LoginUser = (data: ILoginModel) => async (dispatch: Dispatch<AuthAc
     try {
         const response = await http.post<ILoginResponse>("api/auth/login", data);
         const {access_token} = response.data;
-        const user = jwt.decode(access_token) as IUser;
-        dispatch({
-            type: AuthActionTypes.LOGIN_AUTH,
-            payload: user
-        });
+        localStorage.girl = access_token;
+        AuthUser(access_token, dispatch);
         return Promise.resolve();
     }
     catch(ex) {
@@ -27,4 +24,12 @@ export const LoginUser = (data: ILoginModel) => async (dispatch: Dispatch<AuthAc
         }
         return Promise.reject(ex);
     }
+}
+
+export const AuthUser = (token: string, dispatch: Dispatch<AuthAction>) =>  {
+    const user = jwt.decode(token) as IUser;
+    dispatch({
+      type: AuthActionTypes.LOGIN_AUTH,
+      payload: user,
+    });
 }

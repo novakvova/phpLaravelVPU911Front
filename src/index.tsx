@@ -7,6 +7,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from "react-redux";
 import { store } from "./store";
+import { AuthUser } from './components/auth/Login/actions';
+
+
+const token = localStorage.girl as string;
+
+if(token) {
+  AuthUser(token, store.dispatch);
+}
 
 ReactDOM.render(
   <Provider store={store}>
